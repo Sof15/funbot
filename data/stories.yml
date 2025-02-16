@@ -1,0 +1,108 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: fill the form to get events
+  steps:
+  - intent : give_location_and_dates_for_events_list
+  - action: list_events_form
+  - active_loop: list_events_form
+  - active_loop: null
+  - action: action_get_events
+  - action: action_clear_list_events_slots
+
+- story: Fill the form and stop on location country prompt
+  steps:
+  - intent: give_location_and_dates_for_events_list
+  - action: list_events_form
+  - active_loop: list_events_form
+  - slot_was_set:
+    - requested_slot: country
+  - intent: stop_the_form
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_okay
+
+- story: Fill the form and stop on location city prompt
+  steps:
+  - intent: give_location_and_dates_for_events_list
+  - action: list_events_form
+  - active_loop: list_events_form
+  - slot_was_set:
+    - requested_slot: city
+  - intent: stop_the_form
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_okay
+
+- story: Fill the form and stop on time prompt
+  steps:
+  - intent: give_location_and_dates_for_events_list
+  - action: list_events_form
+  - active_loop: list_events_form
+  - slot_was_set:
+    - requested_slot: time
+  - intent: stop_the_form
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_okay
+
+- story: Save some events that has already searched 
+  steps:
+  - intent : give_location_and_dates_for_events_list
+  - action: list_events_form
+  - active_loop: list_events_form
+  - active_loop: null
+  - action: action_get_events
+  - action: action_clear_list_events_slots
+  - intent: save_event
+  - slot_was_set:
+    - events
+    - number
+  - action: action_save_event
+  - intent: display_saved_events
+  - action: action_display_saved_events
+
+- story: Give more details about some events
+  steps:
+  - intent : give_location_and_dates_for_events_list
+  - action: list_events_form
+  - active_loop: list_events_form
+  - active_loop: null
+  - action: action_get_events
+  - action: action_clear_list_events_slots
+  - intent: display_event_info
+  - action: action_get_event_info

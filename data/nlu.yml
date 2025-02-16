@@ -1,0 +1,595 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+    - Good
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: give_location_and_dates_for_events_list
+  examples: |
+    - List all events in [Great Bretain](country) on [1st of Feb]
+    - What events are available in [London](city) [from 21st of Aug to 25th of Aug] ?
+    - What are the enrertainment events in [Oxford](city) [from 21/08 to 25/08] ?
+    - What are the enrertainment events in [Germany](country) [from 21/08 to 25/08] ?
+    - I'd like to watch a [romantic](segment) [movie](classification) [tonight] in [NYC](city).
+    - I'd like to watch a [sci-fi](segment) [movie](classification) [next week] in [London](city).
+    - I'd like to find tickets for a [tennis](segment) [match](classification) in [Australia](country) in [January].
+    - I'd like to find tickets for a [football](segment) [match](classification) in [USA](country) in [March].
+    - List all events in [United States Of America](country) on [1st of February].
+    - What events are available in [New York](city) [from 21st of August to 25th of August]?
+    - What are the entertainment events in [London](city) [from 21/08 to 25/08]?
+    - What are the entertainment events in [Germany](country) [this weekend]?
+    - I'd like to watch a [romantic](segment) [movie](classification) [tonight] in [Toronto](city).
+    - I'd like to watch a [sci-fi](segment) [movie](classification) [next weekend] in [Los Angeles](city).
+    - I'd like to find tickets for a [football](segment) [match](classification) in [Brazil](country) in [March].
+    - Can you show me [music events](classification) happening in [Canada](country) [this month]?
+    - Show me [concerts](classification) in [Paris](city) [this weekend].
+    - Are there any [basketball](segment) [games](classification) in [New Zealand](country) in [July]?
+    - Find a [singer show](classification) happening in [Chicago](city) [next month].
+    - Any [music performances](classification) in [France](country) [today]?
+    - I'd like to attend a [live music event](segment) in [San Francisco](city) [this evening].
+    - Tell me about [sports events](classification) in [Norway](country) in [April].
+    - Are there any [movies](classification) showing in [Atlanta](city) [next Friday]?
+    - Find me [theatre](classification) performances in [Italy](country) during [Easter week].
+    - What [games](classification) are being held in [Phoenix](city) in [December]?
+    - Let me know about [cinema](classification) screenings in [Mexico City](city) [tomorrow].
+    - I want to find [films](classification) to watch in [Munich](city) on [Saturday].
+    - Can you recommend any [concerts](classification) in [Tokyo](city) [next Thursday]?
+    - List all [match](classification) events happening in [Dublin](city) in [February].
+    - Are there any [live performances](segment) in [Melbourne](city) during [summer holidays]?
+    - I’m looking for [tennis](segment) events in [Singapore](country) [this weekend].
+    - What [sport events](classification) are happening in [Bangkok](city) in [October]?
+    - Are there any [live music](segment) performances in [Hong Kong](city) in [December]?
+    - Find [theatre](classification) performances in [Amsterdam](city) [tomorrow night].
+    - I'd like to attend a [movie](classification) screening in [Madrid](city) during [Christmas week].
+    - Show me all [music events](classification) happening in [India](country) in [November].
+    - Can you tell me if any [concerts](classification) are happening in [Birmingham](city) [tonight]?
+    - List [romantic](segment) [movies](classification) being screened in [South Africa](country) [this weekend].
+    - Are there any [sports](classification) happening in [Austin](city) [this Saturday]?
+    - I want to book tickets for a [cinema](classification) in [Zurich](city) during [spring holidays].
+    - Tell me about [live concerts](segment) in [California](city) during [summer].
+    - Can I watch a [science fiction](segment) [movie](classification) in [Vienna](city) on [Sunday]?
+    - Show me all [basketball games](segment) in [Greece](country) during [January].
+    - List all available [football](segment) [matches](classification) in [England](country) [this month]
+    - List all available events in [Barcelona](city) this summer
+- intent: save_event
+  examples: |
+    - Store 5 and 8 concerts.
+    - Set the number 15 match in the favourites list.
+    - Save events 1, 2 and 3.
+    - Add 10 and 20 events to the saved list.
+    - Store events 12 and 24 in the list.
+    - Include event number 7 in my saved events.
+    - Add 1, 2, and 3 performances to favorites.
+    - Save the event with number 11.
+    - Bookmark 5, 6, and 7 events.
+    - Save these event numbers: 8, 10, and 12.
+    - Keep track of 9 and 18 events.
+    - Store 25 as a favorite event.
+    - Save numbers 6, 7, 8, and 9.
+    - Add event 3 to my saved list.
+    - Save 14 and 21 to the events collection.
+    - Mark 16 and 17 events as saved.
+    - Include event 22 in my favorite list.
+- intent: display_saved_events
+  examples: |
+    - Show me the saved events.
+    - Display the saved events.
+    - List all saved events.
+    - Show me the events I saved.
+    - Display the saved list.
+- intent: display_event_info
+  examples: |
+    - Show me more information about the concert 4.
+    - Show me more information about the music event 1 and 3.
+    - Give me details about the concert 2.
+    - Tell me more about the music event 5.
+    - Can you display more information about the concert 7 and 9?
+    - I want to know more about the event 6.
+    - Show details for music events 8 and 10.
+    - Provide more information about the concert 3.
+    - Can you tell me more about the events 4 and 5?
+    - Show me detailed information about the music events 11 and 12.
+    - I want to know more about the event 13.
+    - Give me details about the theatrical event 12.
+    - Provide more information about the film 14 and event 9.
+    - Give me more details about the events 1 and 3
+- intent: respond_w_time
+  examples: |
+    - Tomorrow
+    - Next week
+    - This weekend
+    - This month
+    - tomorrow at 5pm
+    - next week at 6pm
+    - on 04/02/2023
+    - on 04/02/2023 at 6pm
+- intent: stop_the_form
+  examples: |
+    - Stop
+    - Cancel
+    - Quit
+    - Exit
+    - End
+    - Abort
+    - stop the form
+    - i changed my mind, help me with something else
+    - No, forget it
+    - I don't want to continue
+    - I don't want to proceed
+    - I don't want to go on
+    - I don't want to go further
+    - I don't want to go ahead
+    - I don't want to go through with the form
+    - I don't want to go through with it
+    - I want to abort the form
+    - I want to cancel the form
+    - I want to stop the form
+- synonym: film
+  examples: |
+    - movies
+    - films
+    - movie
+    - cinema
+- synonym: music
+  examples: |
+    - music events
+    - concert
+    - concerts
+    - singer shows
+    - music performance
+- synonym: sports
+  examples: |
+    - sport events
+    - match
+    - game
+    - sports
+    - games
+    - sports events
+- synonym: Arts & Theatre
+  examples: |
+    - theatre
+    - theatrical play
+    - theatrical event
+    - theater
+- lookup: classification
+  examples: |
+    - sports
+    - film
+    - music
+    - theatre
+- lookup: country
+  examples: |
+    - United States Of America
+    - Andorra
+    - Anguilla
+    - Argentina
+    - Australia
+    - Austria
+    - Azerbaijan
+    - Bahamas
+    - Bahrain
+    - Barbados
+    - Belgium
+    - Bermuda
+    - Brazil
+    - Bulgaria
+    - Canada
+    - Chile
+    - China
+    - Colombia
+    - Costa Rica
+    - Croatia
+    - Cyprus
+    - Czech Republic
+    - Denmark
+    - Dominican Republic
+    - Ecuador
+    - Estonia
+    - Faroe Islands
+    - Finland
+    - France
+    - Georgia
+    - Germany
+    - Ghana
+    - Gibraltar
+    - Great Britain
+    - Greece
+    - Hong Kong
+    - Hungary
+    - Iceland
+    - India
+    - Ireland
+    - Israel
+    - Italy
+    - Jamaica
+    - Japan
+    - Korea, Republic of
+    - Latvia
+    - Lebanon
+    - Lithuania
+    - Luxembourg
+    - Malaysia
+    - Malta
+    - Mexico
+    - Monaco
+    - Montenegro
+    - Morocco
+    - Netherlands
+    - Netherlands Antilles
+    - New Zealand
+    - Northern Ireland
+    - Norway
+    - Peru
+    - Poland
+    - Portugal
+    - Romania
+    - Russian Federation
+    - Saint Lucia
+    - Saudi Arabia
+    - Serbia
+    - Singapore
+    - Slovakia
+    - Slovenia
+    - South Africa
+    - Spain
+    - Sweden
+    - Switzerland
+    - Taiwan
+    - Thailand
+    - Trinidad and Tobago
+    - Turkey
+    - Ukraine
+    - United Arab Emirates
+    - Uruguay
+    - Venezuela
+- lookup: city
+  examples: |
+    - All of US
+    - Abilene - Sweetwater
+    - Albany - Schenectady - Troy
+    - Albany, GA
+    - Albuquerque - Santa Fe
+    - Alexandria, LA
+    - Alpena
+    - Amarillo
+    - Anchorage
+    - Atlanta
+    - Augusta
+    - Austin
+    - Bakersfield
+    - Baltimore
+    - Bangor
+    - Baton Rouge
+    - Beaumont - Port Arthur
+    - Bend, OR
+    - Billings
+    - Biloxi - Gulfport
+    - Binghamton
+    - Birmingham (Anniston and Tuscaloosa)
+    - Bluefield - Beckley - Oak Hill
+    - Boise
+    - Boston (Manchester)
+    - Bowling Green
+    - Buffalo
+    - Burlington - Plattsburgh
+    - Butte - Bozeman
+    - Casper - Riverton
+    - Cedar Rapids - Waterloo & Dubuque
+    - Champaign & Springfield - Decatur
+    - Charleston, SC
+    - Charleston-Huntington
+    - Charlotte
+    - Charlottesville
+    - Chattanooga
+    - Cheyenne - Scottsbluff
+    - Chicago
+    - Chico - Redding
+    - Cincinnati
+    - Clarksburg - Weston
+    - Cleveland
+    - Colorado Springs - Pueblo
+    - Columbia - Jefferson City
+    - Columbia, SC
+    - Columbus - Tupelo - West Point
+    - Columbus, GA
+    - Columbus, OH
+    - Corpus Christi
+    - Dallas - Fort Worth
+    - Davenport - Rock Island - Moline
+    - Dayton
+    - Denver
+    - Des Moines - Ames
+    - Detroit
+    - Dothan
+    - Duluth - Superior
+    - El Paso
+    - Elmira
+    - Erie
+    - Eugene
+    - Eureka
+    - Evansville
+    - Fairbanks
+    - Fargo - Valley City
+    - Flint - Saginaw - Bay City
+    - Florence - Myrtle Beach
+    - Fort Myers - Naples
+    - Fort Smith - Fayetteville - Springdale - Rogers
+    - Fort Wayne
+    - Fresno - Visalia
+    - Gainesville
+    - Glendive
+    - Grand Junction - Montrose
+    - Grand Rapids - Kalamazoo - Battle Creek
+    - Great Falls
+    - Green Bay - Appleton
+    - Greensboro - High Point - Winston-Salem
+    - Greenville - New Bern - Washington
+    - Greenville - Spartansburg - Asheville - Anderson
+    - Greenwood - Greenville
+    - Harlingen - Weslaco - Brownsville - McAllen
+    - Harrisburg - Lancaster - Lebanon - York
+    - Harrisonburg
+    - Hartford & New Haven
+    - Hattiesburg - Laurel
+    - Helena
+    - Honolulu
+    - Houston
+    - Huntsville - Decatur (Florence)
+    - Idaho Falls - Pocatello
+    - Indianapolis
+    - Jackson, MS
+    - Jackson, TN
+    - Jacksonville
+    - Johnstown - Altoona
+    - Jonesboro
+    - Joplin - Pittsburg
+    - Juneau
+    - Kansas City
+    - Knoxville
+    - La Crosse - Eau Claire
+    - Lafayette, IN
+    - Lafayette, LA
+    - Lake Charles
+    - Lansing
+    - Laredo
+    - Las Vegas
+    - Lexington
+    - Lima
+    - Lincoln & Hastings - Kearney
+    - Little Rock - Pine Bluff
+    - Los Angeles
+    - Louisville
+    - Lubbock
+    - Macon
+    - Madison
+    - Mankato
+    - Marquette
+    - Medford - Klamath Falls
+    - Memphis
+    - Meridian
+    - Miami - Fort Lauderdale
+    - Milwaukee
+    - Minneapolis - Saint Paul
+    - Minot - Bismarck - Dickinson
+    - Missoula
+    - Mobile - Pensacola (Fort Walton Beach)
+    - Monroe - El Dorado
+    - Monterey - Salinas
+    - Montgomery (Selma)
+    - Nashville
+    - New Orleans
+    - New York
+    - Norfolk - Portsmouth - Newport News
+    - North Platte
+    - Odessa - Midland
+    - Oklahoma City
+    - Omaha
+    - Orlando - Daytona Beach - Melbourne
+    - Ottumwa - Kirksville
+    - Paducah - Cape Girardeau - Harrisburg - Mt Vernon
+    - Palm Springs
+    - Panama City
+    - Parkersburg
+    - Peoria - Bloomington
+    - Philadelphia
+    - Phoenix
+    - Pittsburgh
+    - Portland - Auburn
+    - Portland, OR
+    - Presque Isle
+    - Providence - New Bedford
+    - Quincy - Hannibal - Keokuk
+    - Raleigh - Durham (Fayetteville)
+    - Rapid City
+    - Reno
+    - Richmond - Petersburg
+    - Roanoke - Lynchburg
+    - Rochester - Mason City - Austin
+    - Rochester, NY
+    - Rockford
+    - Sacramento - Stockton - Modesto
+    - Saint Joseph
+    - Saint Louis
+    - Salisbury
+    - Salt Lake City
+    - San Angelo
+    - San Antonio
+    - San Diego
+    - San Francisco - Oakland - San Jose
+    - Santa Barbara - Santa Maria - San Luis Obispo
+    - Savannah
+    - Seattle - Tacoma
+    - Sherman - Ada
+    - Shreveport
+    - Sioux City
+    - Sioux Falls (Mitchell)
+    - South Bend - Elkhart
+    - Spokane
+    - Springfield - Holyoke
+    - Springfield, MO
+    - Syracuse
+    - Tallahassee - Thomasville
+    - Tampa - Saint Petersburg (Sarasota)
+    - Terre Haute
+    - Toledo
+    - Topeka
+    - Traverse City - Cadillac
+    - Tri-Cities, TN-VA
+    - Tucson (Sierra Vista)
+    - Tulsa
+    - Twin Falls
+    - Tyler - Longview (Lufkin & Nacogdoches)
+    - Utica
+    - Victoria
+    - Waco - Temple - Bryan
+    - Washington DC (Hagerstown)
+    - Watertown
+    - Wausau - Rhinelander
+    - West Palm Beach - Fort Pierce
+    - Wheeling - Steubenville
+    - Wichita - Hutchinson
+    - Wichita Falls & Lawton
+    - Wilkes Barre - Scranton
+    - Wilmington
+    - Yakima - Pasco - Richland - Kennewick
+    - Youngstown
+    - Yuma - El Centro
+    - Zanesville
+    - Northern New Jersey
+    - All of Canada
+    - Barrie-Orillia
+    - Belleville-Peterborough
+    - Owen Sound
+    - Burnaby-New Westminster-Surrey
+    - Calgary-Banff
+    - Edmonton
+    - Fraser Valley
+    - Hamilton-Niagara
+    - Kitchener-Waterloo
+    - London-Sarnia
+    - Mississauga-Oakville
+    - Newfoundland
+    - NWT
+    - New Brunswick
+    - Northern Ontario
+    - Nova Scotia
+    - Nunavit
+    - Okanagan-Kootenays
+    - Ottawa-Gatineau
+    - PEI
+    - Prince George-North
+    - Montreal and Surrounding Area
+    - Red Deer
+    - Saskatchewan
+    - Toronto
+    - Vancouver
+    - Sunshine Coast-Islands
+    - Winnipeg-Brandon
+    - Yukon
+    - All of United Kingdom
+    - London
+    - South
+    - Midlands and Central
+    - Wales and North West
+    - North and North East
+    - Scotland
+    - All of Ireland
+    - Northern Ireland
+    - Germany
+    - Netherlands
+    - Sweden
+    - Turkey
+    - All of Australia
+    - New South Wales/Australian Capital Territory
+    - Queensland
+    - Western Australia
+    - Victoria/Tasmania
+    - All of New Zealand
+    - North Island
+    - South Island
+    - All of Mexico
+    - Mexico City and Metropolitan Area
+    - Monterrey
+    - Guadalajara
+    - All of Spain
+    - Barcelona
+    - Madrid

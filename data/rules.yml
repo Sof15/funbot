@@ -1,0 +1,77 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Save event every time the users asks for it
+  condition:
+  - slot_was_set:
+    - events
+    - number
+  steps:
+  - intent: save_event
+  - action: action_save_event
+
+
+- rule: Ask for events slot if missing when saving events
+  condition:
+    - slot_was_set:
+        - events: null  
+  steps:
+    - intent: save_event
+    - action: utter_ask_events
+
+- rule: Display saved events every time the users asks for it
+  steps:
+  - intent: display_saved_events
+  - action: action_display_saved_events
+
+
+- rule: Display event information when asked to
+  condition:
+  - slot_was_set:
+    - events: any
+  steps:
+  - intent: display_event_info
+  - action: action_get_event_info
+  - slot_was_set:
+    - is_music
+  - action: action_display_spotify_info
+
+
+- rule: Activate form to list events
+  steps:
+  - intent: give_location_and_dates_for_events_list
+  - action: list_events_form
+  - active_loop: list_events_form
+
+- rule: Submit form
+  condition:
+  - active_loop: list_events_form
+  steps:
+  - action: list_events_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_get_events
+  - action: action_clear_list_events_slots
+
+- rule: Deactivate form when user stops it
+  condition:
+  - active_loop: list_events_form
+  steps:
+  - intent: stop_the_form
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_okay

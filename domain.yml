@@ -1,0 +1,155 @@
+version: '3.1'
+
+intents:
+- affirm
+- bot_challenge
+- deny
+- give_location_and_dates_for_events_list:
+    use_entities: 
+      - classification
+      - segment
+      - country
+      - city
+      - time
+- goodbye
+- greet
+- mood_great
+- mood_unhappy
+- respond_w_time
+- save_event:
+    use_entities: 
+      - number
+      - events
+- display_saved_events:
+    use_entities: []
+- display_event_info:
+    use_entities: 
+      - number
+      - events
+- stop_the_form
+
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ask_country:
+  - text: "In which country and/or city are you looking for events?"
+  utter_ask_city:
+  - text: "In which country and/or city are you looking for events?"
+  utter_ask_time:
+  - text: "When are you looking for events?"
+  utter_ask_events:
+  - text: "You should first make a search to decide which event you want to save."
+  utter_okay:
+  - text: "Okay, let me know if you need anything else."
+  - text: "Alright, let me know if you need anything else."
+  - text: "Sure, let me know if you need anything else."
+
+entities:
+- classification
+- segment
+- country
+- city
+- time
+- number
+- is_music
+    
+
+slots:
+  classification:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: classification
+      influence_conversation: true
+      intent: give_location_and_dates_for_events_list
+  segment: 
+    type: text
+    mappings:
+    - type: from_entity
+      influence_conversation: true
+      entity: segment
+      intent: give_location_and_dates_for_events_list
+  country:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: country
+      influence_conversation: true
+      intent: give_location_and_dates_for_events_list
+  city:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: city
+      influence_conversation: true
+      intent: give_location_and_dates_for_events_list
+  time:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: time
+      influence_conversation: true
+      intent: 
+        - give_location_and_dates_for_events_list
+        - respond_w_time
+  events:
+    type: any
+    mappings:
+    - type: custom
+      action: action_get_events
+  number:
+    type: list
+    mappings:
+    - type: from_entity
+      entity: number
+      intent: 
+        - save_event
+        - display_event_info
+      not_intent: 
+        - give_location_and_dates_for_events_list
+        - display_saved_events
+  is_music:
+    type: list
+    mappings:
+    - type: custom
+      action: action_get_event_info
+  
+forms:
+  list_events_form:
+    required_slots:
+      - country
+      - city
+      - time
+      
+
+actions:
+- action_get_events
+- utter_greet
+- utter_goodbye
+- utter_happy
+- utter_ask_country
+- utter_ask_city
+- utter_ask_time
+- utter_ask_events
+- action_get_time_w_grain
+- action_save_event
+- action_display_saved_events
+- action_display_spotify_info
+- action_get_event_info
+- validate_list_events_form
+- action_clear_list_events_slots
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
